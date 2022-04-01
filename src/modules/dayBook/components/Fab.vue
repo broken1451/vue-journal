@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button class="btn btn-primary">
+    <button @click="$emit('on:click')" class="btn btn-primary">
       <!-- <i :class="`fa fa-2x ${icon}`"></i> -->
       <i :class="icon" class="fa fa-2x"></i>
     </button>
