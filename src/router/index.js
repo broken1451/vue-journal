@@ -1,6 +1,8 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import Home from '../views/Home.vue'
-import DayBookRouter from '../modules/dayBook/router/index'
+import DayBookRouter from "../modules/dayBook/router/index";
+import AuthRouter from "../modules/auth/router/index";
+import { isAuthenticatedGuardJournal } from '../modules/auth/router/authGuard';
 
 const routes = [
   {
@@ -19,7 +21,17 @@ const routes = [
   },
   {
     path: "/daybook",
+    beforeEnter: [isAuthenticatedGuardJournal],
     ...DayBookRouter,
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    // component: () =>
+    //   import(/* webpackChunkName: "daybook" */ "../modules/dayBook/layouts/DayBookLayout.vue"),
+  },
+  {
+    path: "/auth",
+    ...AuthRouter,
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
