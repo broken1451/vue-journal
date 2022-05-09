@@ -27,3 +27,8 @@ export const deleteEntryMutation = (/*state, entry*/ state, entry) => {
   state.entries = state.entries.filter((e) => e.id != entry.id);
 //   state.entries = newEntries;
 };
+
+export const clearEntries = (/*state, entry*/ state) => {
+  state.entries = [];
+//   state.entries = newEntries;
+};
